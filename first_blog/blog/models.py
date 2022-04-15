@@ -39,3 +39,8 @@ class Post(models.Model):
         verbose_name = 'Пост'
         verbose_name_plural = 'Посты'
         ordering = ('create_post_date',)
+
+    def get_author_img(self):
+        img_author = self.author.image.url
+        return img_author
+
