@@ -11,8 +11,8 @@ class AuthorAdmin(admin.ModelAdmin):
 
     fieldsets = (
         (None, {
-            'fields': ('name', 'image', 'about_text', 'country',
-                       'twitter_share', 'facebook_share', 'google_plus_share')
+            'fields': ('name', 'image', 'background_image', 'about_text', 'country',
+                       'email', 'twitter_share', 'facebook_share', 'google_plus_share')
         }),
     )
 

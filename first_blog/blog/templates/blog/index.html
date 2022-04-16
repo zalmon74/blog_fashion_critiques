@@ -2,7 +2,27 @@
 
 {% load static %}
 
+{% block url_author %} {% url 'author' author.name  %} {% endblock url_author %}
+{% block twitter %} {{ author.twitter_share }} {% endblock twitter %}
+{% block facebook %} {{ author.facebook_share }} {% endblock facebook %}
+{% block googleplus %} {{ author.google_plus_share }} {% endblock googleplus %}
+
 {% block content %}
+
+    <header class="main-header " style="background-image: url( {% static "assets/img/intro.jpg" %})">
+    <div class="vertical">
+        <div class="main-header-content inner">
+            <h1 class="page-title">Fashion Critiques</h1>
+            <div class="entry-title-divider">
+                <span></span><span></span><span></span>
+            </div>
+            <h2 class="page-description">Thoughts, reviews and ideas since 1999.</h2>
+        </div>
+    </div>
+    <a class="scroll-down icon-arrow-left" href="#content" data-offset="-45"><span class="hidden">Scroll Down</span></a>
+    </header>
+
+<main id="content" class="content" role="main">
 <div class="wraps">
     <img src="{% static "assets/img/shadow.png" %}" class="wrapshadow">
 
@@ -27,7 +47,7 @@
                 </section>
                 <footer class="post-meta">
                 <img class="author-thumb" src="{{ post.get_author_img }}" alt="author" nopin="nopin"/>
-                <a href="author.html">{{ post.author.name }}</a>
+                <a href="{% url 'author' post.get_author_name %}">{{ post.author.name }}</a>
                 <time class="post-date">{{ post.create_post_date | date:"d E Y" }}</time>
                 </footer>
             </div>
@@ -58,4 +78,7 @@
     {% endif %}
 
 </div>
+
+</main>
+
 {% endblock content %}
