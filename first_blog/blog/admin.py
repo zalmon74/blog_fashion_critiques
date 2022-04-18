@@ -24,7 +24,7 @@ class PostAdmin(admin.ModelAdmin):
     list_display_links = ('pk', 'title', 'author')
     fieldsets = (
         (None, {
-            'fields': ('title', 'prew', 'image_prew', 'author')
+            'fields': ('title', 'prew', 'image_prew', 'author', 'content')
         }),
     )
 

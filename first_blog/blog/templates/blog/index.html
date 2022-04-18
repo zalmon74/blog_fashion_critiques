@@ -33,16 +33,16 @@
             <article class="post tag-romance">
 
             {% if post.image_prew %}
-                <a href="article.html"><img src="{{ post.image_prew.url }}"></a>
+                <a href="{% url 'post_detail' post.pk %}"><img src="{{ post.image_prew.url }}"></a>
             {% endif %}
 
             <div class="wrapgriditem">
                 <header class="post-header">
-                <h2 class="post-title"><a href="article.html">{{ post.title }}</a></h2>
+                <h2 class="post-title"><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
                 </header>
                 <section class="post-excerpt">
                 <p>
-                    {{ post.prew }} <a class="read-more" href="article.html">&raquo;</a>
+                    {{ post.prew }} <a class="read-more" href="{% url 'post_detail' post.pk %}">&raquo;</a>
                 </p>
                 </section>
                 <footer class="post-meta">

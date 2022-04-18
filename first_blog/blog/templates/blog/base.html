@@ -12,10 +12,11 @@
 <link rel="stylesheet" type="text/css" href="{% static "assets/css/screen.css" %}">
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:400,300italic,300,400italic,700,700italic|Playfair+Display:400,700,400italic,700italic"/>
 </head>
-<body class="home-template">
+
+<body class=" {% block class_body %} home-template {% endblock class_body %}">
 <div class="site-wrapper">
 	<nav class="main-nav overlay clearfix">
-	<a class="blog-logo" href="index.html"><img src="{% static "assets/img/logo.png" %}" alt="Fashion Critiques"/></a>
+	<a class="blog-logo" href="{% url 'index' %}"><img src="{% static "assets/img/logo.png" %}" alt="Fashion Critiques"/></a>
 	<ul id="menu">
 		<li class="nav-home nav-current" role="presentation"><a href="{% url 'index' %}">Home</a></li>
 		<li class="nav-article-example" role="presentation"><a href="article.html">Post Example</a></li>

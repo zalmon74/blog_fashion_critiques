@@ -43,8 +43,9 @@ class Post(models.Model):
     image_prew = models.ImageField('Картинка для поста', upload_to=user_directory_path_for_image_preview_post_files,
                                    null=True, blank=True)
     author = models.ForeignKey(Author, verbose_name='Автор', on_delete=models.CASCADE)
-    create_post_date = models.DateField("Дата создания поста", auto_now=True)
-    last_edit_date = models.DateTimeField("Дата и время последнего изменения поста", auto_now_add=True)
+    create_post_date = models.DateField('Дата создания поста', auto_now_add=True)
+    last_edit_date = models.DateTimeField('Дата и время последнего изменения поста', auto_now=True)
+    content = models.TextField('Основная информация поста', default="")
 
     def __str__(self):
         return self.title
