@@ -7,6 +7,8 @@
 {% block facebook %} {{ author.facebook_share }} {% endblock facebook %}
 {% block googleplus %} {{ author.google_plus_share }} {% endblock googleplus %}
 
+{% block class_body %}home-template{% endblock class_body %}
+
 {% block content %}
 
     <header class="main-header " style="background-image: url( {% static "assets/img/intro.jpg" %})">
@@ -24,7 +26,6 @@
 
 <main id="content" class="content" role="main">
 <div class="wraps">
-    <img src="{% static "assets/img/shadow.png" %}" class="wrapshadow">
 
     <div class="grid">
     {% for post in posts %}

@@ -10,6 +10,9 @@
 {% block googleplus %} {{ author.google_plus_share }} {% endblock googleplus %}
 {% block email %} {{ author.email }} {% endblock email %}
 
+
+{% block class_body %}author-template{% endblock class_body %}
+
 {% block content %}
 
     {% if author.background_image %}
@@ -39,7 +42,6 @@
 
 	<main class="content" role="main">
 	<div class="wraps">
-    <img src="{% static "assets/img/shadow.png" %}" class="wrapshadow">
 
     <div class="grid">
     {% for post in posts %}
@@ -48,16 +50,16 @@
             <article class="post tag-romance">
 
             {% if post.image_prew %}
-                <a href="article.html"><img src="{{ post.image_prew.url }}"></a>
+                <a href="{% url 'post_detail' post.pk %}"><img src="{{ post.image_prew.url }}"></a>
             {% endif %}
 
             <div class="wrapgriditem">
                 <header class="post-header">
-                <h2 class="post-title"><a href="article.html">{{ post.title }}</a></h2>
+                <h2 class="post-title"><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
                 </header>
                 <section class="post-excerpt">
                 <p>
-                    {{ post.prew }} <a class="read-more" href="article.html">&raquo;</a>
+                    {{ post.prew }} <a class="read-more" href="{% url 'post_detail' post.pk %}">&raquo;</a>
                 </p>
                 </section>
                 <footer class="post-meta">
