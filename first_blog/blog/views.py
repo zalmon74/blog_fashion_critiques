@@ -1,4 +1,7 @@
 from django.views.generic import ListView, DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+
+from django.urls import reverse_lazy
 
 from .models import Post, Author
 
@@ -37,6 +40,7 @@ class AuthorView(ListView):
 class PostDetailView(DetailView):
     model = Post
     template_name = 'blog/detail_post.html'
+    context_object_name = 'post'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -50,3 +54,29 @@ class PostDetailView(DetailView):
         if last_post != next_post and last_post != self.get_object():
             context['last_post'] = last_post
         return context
+
+
+class PostCreateView(CreateView):
+    model = Post
+    template_name = 'blog/create_post.html'
+    fields = ['title', 'prew', 'image_prew', 'author', 'content']
+
+
+class PostEditView(UpdateView):
+    model = Post
+    template_name = 'blog/edit_post.html'
+    fields = ['title', 'prew', 'image_prew', 'content']
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['current_post_pk'] = self.get_object().pk
+        context['author'] = self.get_object().author
+        return context
+
+
+class PostDeleteView(DeleteView):
+    model = Post
+    template_name = 'blog/delete_post.html'
+    success_url = reverse_lazy('index')
+
+

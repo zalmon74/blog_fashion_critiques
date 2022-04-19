@@ -1,5 +1,7 @@
 from django.db import models
 
+from django.urls import reverse
+
 from .functions import (user_directory_path_for_image_avatar_author_files,
                         user_directory_path_for_background_image_author_files,
                         user_directory_path_for_image_preview_post_files)
@@ -54,6 +56,9 @@ class Post(models.Model):
         verbose_name = 'Пост'
         verbose_name_plural = 'Посты'
         ordering = ('create_post_date',)
+
+    def get_absolute_url(self):
+        return reverse('post_detail', args=[str(self.id)])
 
     def get_author_img(self):
         img_author = self.author.image.url

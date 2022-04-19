@@ -1,0 +1,18 @@
+{% extends 'blog/base.html' %}
+
+{% load static %}
+
+{% block url_author %} {% url 'author' author.name  %} {% endblock url_author %}
+
+{% block title %}Edit post № {{ current_post_pk }}{% endblock title %}
+
+{% block content %}
+
+    <h1>Edit post № {{ current_post_pk }}</h1>
+
+    <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save">
+    </form>
+
+{% endblock content %}

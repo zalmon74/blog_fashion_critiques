@@ -19,9 +19,14 @@
 	<a class="blog-logo" href="{% url 'index' %}"><img src="{% static "assets/img/logo.png" %}" alt="Fashion Critiques"/></a>
 	<ul id="menu">
 		<li class="nav-home nav-current" role="presentation"><a href="{% url 'index' %}">Home</a></li>
-		<li class="nav-article-example" role="presentation"><a href="article.html">Post Example</a></li>
-		<li class="nav-about-us" role="presentation"><a href="about.html">Page Example</a></li>
-		<li class="nav-author-page" role="presentation"><a href="{% block url_author %}{% endblock url_author %}">Author</a></li>
+        {% block visible_nav_author %}
+		    <li class="nav-author-page" role="presentation"><a href="{% block url_author %}{% endblock url_author %}">Author</a></li>
+        {% endblock visible_nav_author %}
+        {% if user.is_authenticated %}
+            <li class="nav-about-us" role="presentation"><a href="{% url 'post_create' %}">Create Post</a></li>
+            {% block post_edit_nav %}{% endblock post_edit_nav %}
+            {% block post_delete_nav %}{% endblock post_delete_nav %}
+        {% endif %}
 		<span class="socialheader">
 		<a href="{% block twitter %}{% endblock twitter %}"><span class='symbol'>circletwitterbird</span></a>
 		<a href="{% block facebook %}{% endblock facebook %}"><span class='symbol'>circlefacebook</span></a>

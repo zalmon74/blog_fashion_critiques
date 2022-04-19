@@ -2,13 +2,21 @@
 
 {% load static %}
 
+{% block post_edit_nav %}
+    <li class="nav-about-us" role="presentation"><a href="{% url 'post_edit' post.pk %}">Edit current post</a></li>
+{% endblock post_edit_nav %}
+
+{% block post_delete_nav %}
+    <li class="nav-about-us" role="presentation"><a href="{% url 'post_delete' post.pk %}">Delete current post</a></li>
+{% endblock post_delete_nav %}
+
 {% block title %} Пост || № {{ post.pk }} {% endblock title %}
 
 {% block class_body %}post-template{% endblock class_body %}
 
 {% block content %}
 
-    {% if post.imge_prew %}
+    {% if post.image_prew %}
 	    <header class="main-header post-head " style="background-image: url({{ post.image_prew.url }})">
     {% else %}
         <header class="main-header post-head " style="background-image: url({% static 'assets/img/random.jpg' %})">
